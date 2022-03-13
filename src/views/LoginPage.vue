@@ -8,7 +8,7 @@
     </div>
 
     <!-- Login -->
-    <form @submit.prevent="login" class="p-8 flex flex-col  rounded-md shadow-lg">
+    <form @submit.prevent="login" class="p-8 flex flex-col rounded-box shadow-lg">
       <h1 class="text-3xl mb-4">Login</h1>
 
       <div class="flex flex-col mb-2">
