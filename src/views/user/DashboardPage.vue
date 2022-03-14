@@ -8,7 +8,7 @@
       <div class="card shadow-lg">
         <div class="card-body items-center text-center">
          
-          <table class="table w-full">
+          <table class="table table-fixed w-full">
             <!-- head -->
             <thead>
               <tr>
