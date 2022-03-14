@@ -39,6 +39,9 @@
           <li>
             <router-link :to="{name: 'Dashboard'}" v-if="user">Dashboard</router-link>
           </li>
+          <li>
+            <router-link :to="{name: 'Employee-Overview'}" v-if="user">Employees</router-link>
+          </li>
           <li><a>FAQ</a></li>
           <li>
             <router-link :to="{name: 'Contact'}">Contact</router-link>
@@ -56,10 +59,7 @@
             </label>
             <ul tabindex="0" class="menu menu-compact dropdown-content mt-3 p-2 shadow rounded-box w-52">
               <li>
-                <a class="justify-between">
-                  Profile
-                  <span class="badge">New</span>
-                </a>
+                <router-link :to="{name: 'Profile'}">Profile</router-link>
               </li>
               <li><a>Settings</a></li>
               <li @click="logout"><a>Logout</a></li>

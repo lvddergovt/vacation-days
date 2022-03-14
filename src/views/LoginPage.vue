@@ -15,8 +15,8 @@
           <img src="@/assets/images/rubber/rubber-vacation.png" alt="">
         </div>
 
-        <form @submit.prevent="login" class="w-full mt-16 md:mt-0 md:w-2/5">
-          <div class="relative z-10 h-auto p-8 py-10 overflow-hidden rounded-lg shadow-xl px-7">
+        <form @submit.prevent="login" class="w-full mt-16 md:mt-0 md:w-2/5 ">
+          <div class="relative z-10 h-auto p-8 py-10 overflow-hidden rounded-xl shadow-xl px-7">
             <h3 class="mb-6 text-2xl font-medium text-center">Sign in to your account</h3>
             
             <div class="flex flex-col mb-2">

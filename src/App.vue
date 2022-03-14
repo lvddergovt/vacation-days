@@ -25,6 +25,7 @@ export default {
     const appReady = ref(null);
 
     const user = supabase.auth.user();
+    
     if (!user) {
       appReady.value = true;
     }

@@ -4,6 +4,8 @@ import LoginPage from '../views/LoginPage.vue';
 import RegisterPage from '../views/RegisterPage.vue';
 import ContactPage from '../views/ContactPage.vue';
 import DashboardPage from '../views/user/DashboardPage.vue';
+import EmployeeOverview from '../views/user/EmployeeOverview.vue';
+import ProfilePage from '../views/user/ProfilePage.vue';
 
 const routes: Array<RouteRecordRaw> = [
   {
@@ -44,6 +46,22 @@ const routes: Array<RouteRecordRaw> = [
     component: DashboardPage,
     meta: {
       title: "Dashboard"
+    }
+  },
+  {
+    path: '/overview',
+    name: 'Employee-Overview',
+    component: EmployeeOverview,
+    meta: {
+      title: "Employees"
+    }
+  },
+  {
+    path: '/profile',
+    name: 'Profile',
+    component: ProfilePage,
+    meta: {
+      title: "Profile"
     }
   },
   // {
