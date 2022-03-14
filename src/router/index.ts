@@ -9,27 +9,42 @@ const routes: Array<RouteRecordRaw> = [
   {
     path: '/',
     name: 'Home',
-    component: HomeView
+    component: HomeView,
+    meta: {
+      title: "Home"
+    }
   },
   {
     path: '/login',
     name: 'Login',
-    component: LoginPage
+    component: LoginPage,
+    meta: {
+      title: "Login"
+    }
   },
   {
     path: '/register',
     name: 'Register',
-    component: RegisterPage
+    component: RegisterPage,
+    meta: {
+      title: "Register"
+    }
   },
   {
     path: '/contact',
     name: 'Contact',
-    component: ContactPage
+    component: ContactPage,
+    meta: {
+      title: "Contact"
+    }
   },
   {
     path: '/dashboard',
     name: 'Dashboard',
-    component: DashboardPage
+    component: DashboardPage,
+    meta: {
+      title: "Dashboard"
+    }
   },
   // {
   //   path: '/about',
@@ -44,6 +59,12 @@ const routes: Array<RouteRecordRaw> = [
 const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),
   routes
-})
+});
+
+// Change document title
+router.beforeEach((to, from, next) => {
+  document.title = `${to.meta.title} | Vacation Days`;
+  next();
+});
 
 export default router
