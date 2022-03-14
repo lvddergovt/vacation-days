@@ -30,8 +30,6 @@
         </div>
       </div>
 
-
-
       <div class="card shadow-lg sm:grow">
         <div class="card-body items-center text-center">
          
@@ -51,8 +49,8 @@
               <tr v-for="(item, index) in userPTO" :key="index">
                 <td>{{ item.type }}</td>
                 <td>
-                  <span v-if="isPTOApproved(item)">Approved</span>
-                  <span v-else>Denied</span>
+                  <span class="badge badge-success" v-if="isPTOApproved(item)">Approved</span>
+                  <span class="badge badge-error" v-else>Denied</span>
                 </td>
                 <td>{{ item.start }}</td>
                 <td>{{ item.end }}</td>
@@ -65,11 +63,7 @@
             
           </table>
         </div>
-      </div>
-
-
-
-       
+      </div>  
     </div>
        
     </div>
@@ -107,7 +101,8 @@ export default defineComponent({
       try {
         const { data: pto, error } = await supabase.from("paid-time-off").select("*").eq("user_id", user.value.id);
         if (error) throw error;
-        userPTO.value = pto.sort((a, b) => b.start - a.start);
+        userPTO.value = pto.sort((a, b) => a.start.localeCompare(b.start));
+        console.log(pto)
         dataLoaded.value = true;
       }
       catch(error) {
