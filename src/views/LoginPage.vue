@@ -20,12 +20,12 @@
             <h3 class="mb-6 text-2xl font-medium text-center">Sign in to your account</h3>
             
             <div class="flex flex-col mb-2">
-              <label for="email" class="mb-1 text-sm">Email</label>
+              <label for="email" class="label">Email</label>
               <input type="text" required class="input input-bordered w-full" id="email" v-model="email" />
             </div>
 
             <div class="flex flex-col mb-10">
-              <label for="password" class="mb-1 text-sm">Password</label>
+              <label for="password" class="label">Password</label>
               <input type="password" required class="input input-bordered w-full" id="password" v-model="password" />
             </div>
             <div class="block">
@@ -66,7 +66,7 @@ export default {
           password: password.value
         });
         if (error) throw error;
-        router.push({ name: "Home" });
+        router.push({ name: "Dashboard" });
       }
       catch(error) {
         errorMsg.value = `Error: ${error.message}`;

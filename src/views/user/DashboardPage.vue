@@ -16,8 +16,8 @@
             </div>
           </div>
           <div>
-            <div class="text-lg font-extrabold">{{ user.firstname }} Thurman</div> 
-            <div class="text-base-content/70 text-sm">Developer</div>
+            <div class="text-lg font-extrabold">{{ userData.firstname }} {{ userData.lastname }}</div> 
+            <div class="text-base-content/70 text-sm">{{ userData.job_title }}</div>
           </div>
         </div> 
         
@@ -39,8 +39,8 @@
             <!-- head -->
             <thead>
               <tr>
-                <th>Name</th>
                 <th>Type</th>
+                <th>Status</th>
                 <th>Start</th>
                 <th>End</th>
                 <th></th>
@@ -49,21 +49,11 @@
             <tbody>
              
               <tr v-for="(item, index) in userPTO" :key="index">
-                <td>
-                   <div class="flex items-center space-x-3">
-                    <div class="avatar">
-                      <div class="mask mask-squircle w-12 h-12">
-                        <img src="@/assets/images/jelly-a-monster-with-a-suitcase-and-a-hat-carries-a-flower-on-a-date.png" alt="Avatar Tailwind CSS Component" />
-                      </div>
-                    </div>
-                    <div>
-                      <div class="font-bold">Hart Hagerty</div>
-                      <div class="text-sm opacity-50">United States</div>
-                    </div>
-                  </div>
-                </td>
-
                 <td>{{ item.type }}</td>
+                <td>
+                  <span v-if="isPTOApproved(item)">Approved</span>
+                  <span v-else>Denied</span>
+                </td>
                 <td>{{ item.start }}</td>
                 <td>{{ item.end }}</td>
                 <td>
@@ -88,7 +78,7 @@
 </template>
 
 <script>
-import { ref, defineComponent } from 'vue';
+import { ref, defineComponent, onMounted } from 'vue';
 import { supabase } from "@/supabase/init";
 import { useRouter } from "vue-router";
 import store from "@/store/index";
@@ -103,7 +93,7 @@ export default defineComponent({
 
     // get user from store
     const user = computed(() => store.state.user);
-
+    const userData = ref({});
     
     // setup ref to router
     const router = useRouter();
@@ -117,7 +107,7 @@ export default defineComponent({
       try {
         const { data: pto, error } = await supabase.from("paid-time-off").select("*").eq("user_id", user.value.id);
         if (error) throw error;
-        userPTO.value = pto;
+        userPTO.value = pto.sort((a, b) => b.start - a.start);
         dataLoaded.value = true;
       }
       catch(error) {
@@ -125,13 +115,44 @@ export default defineComponent({
       } 
     }
 
+    const getProfile = async() => {
+      try {
+        let { data, error, status } = await supabase
+          .from("profiles")
+          .select(`firstname, lastname, job_title, avatar_url`)
+          .eq("id", user.value.id)
+          .single();
+        if (error && status !== 406) {
+          throw error;
+        }
+        if (data) {
+          userData.value = data;
+        }
+      } catch (error) {
+        alert(error.message);
+      }
+    };
+
+    const isPTOApproved = (item) => {
+      if (item.is_approved && item.handled_date != null) {
+        return true;
+      } else {
+        false
+      }
+    }
+
     // run data function
-    getData();
+    onMounted(() => {
+      getData();
+      getProfile();
+    });
 
     return {
       userPTO,
       dataLoaded,
-      user
+      user,
+      userData,
+      isPTOApproved
     };
   }
 });

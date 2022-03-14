@@ -21,7 +21,7 @@
             <li><a>Item 3</a></li>
           </ul>
         </div>
-        <router-link :to="{name: 'Home'}" class="btn btn-ghost normal-case text-xl">Vacation Days</router-link>
+        <router-link :to="{name: 'Home'}" class="btn btn-ghost normal-case text-warning text-xl hover:bg-transparent">Vacation Days</router-link>
 
       </div>
       <div class="navbar-center hidden lg:flex">
@@ -79,9 +79,9 @@
   }
 </style>
 
-<script lang="ts">
+<script>
 
-import { supabase } from "../supabase/init";
+import { supabase } from "@/supabase/init";
 import { useRouter } from "vue-router";
 import store from "../store/index";
 import { computed } from "vue";
