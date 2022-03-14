@@ -1,5 +1,5 @@
 <template>
-  <div v-if="appReady" data-theme="light">
+  <div v-if="appReady">
     <NavigationBar />
 
     <router-view/>

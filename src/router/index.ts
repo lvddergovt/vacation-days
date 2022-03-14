@@ -3,6 +3,7 @@ import HomeView from '../views/HomeView.vue';
 import LoginPage from '../views/LoginPage.vue';
 import RegisterPage from '../views/RegisterPage.vue';
 import ContactPage from '../views/ContactPage.vue';
+import DashboardPage from '../views/user/DashboardPage.vue';
 
 const routes: Array<RouteRecordRaw> = [
   {
@@ -24,6 +25,11 @@ const routes: Array<RouteRecordRaw> = [
     path: '/contact',
     name: 'Contact',
     component: ContactPage
+  },
+  {
+    path: '/dashboard',
+    name: 'Dashboard',
+    component: DashboardPage
   },
   // {
   //   path: '/about',

@@ -36,7 +36,9 @@
               <li><a>Submenu 2</a></li>
             </ul>
           </li> -->
-          <li><a>Dashboard</a></li>
+          <li>
+            <router-link :to="{name: 'Dashboard'}" v-if="user">Dashboard</router-link>
+          </li>
           <li><a>FAQ</a></li>
           <li>
             <router-link :to="{name: 'Contact'}">Contact</router-link>
