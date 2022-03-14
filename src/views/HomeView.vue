@@ -12,7 +12,10 @@
           Easily keep track of your leave and vacation days. Set up a company account to streamline your workflow. Know when people are not in the office.
         </p>
         <div class="flex justify-center items-center">
-          <router-link class="btn btn-primary mr-5" :to="{ name: 'Register' }">
+           <router-link v-if="user" class="btn btn-primary mr-5" :to="{ name: 'Dashboard' }">
+            View Dashboard
+          </router-link>
+          <router-link v-else class="btn btn-primary mr-5" :to="{ name: 'Register' }">
             Get Started
           </router-link>
           <span class="mr-4">or</span>
@@ -86,13 +89,21 @@
 
 </template>
 
-<script lang="ts">
-import { defineComponent } from 'vue';
+<script>
+import { defineComponent, computed } from 'vue';
+import store from "@/store/index";
 
 export default defineComponent({
   name: 'HomeView',
   components: {
     
   },
+  setup() {
+    const user = computed(() => store.state.user);
+
+    return {
+      user
+    }
+  }
 });
 </script>

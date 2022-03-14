@@ -61,7 +61,6 @@
               <li>
                 <router-link :to="{name: 'Profile'}">Profile</router-link>
               </li>
-              <li><a>Settings</a></li>
               <li @click="logout"><a>Logout</a></li>
             </ul>
           </div>
