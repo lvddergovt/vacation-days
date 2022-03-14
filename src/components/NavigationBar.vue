@@ -21,7 +21,8 @@
             <li><a>Item 3</a></li>
           </ul>
         </div>
-        <a class="btn btn-ghost normal-case text-xl">Vacation Days</a>
+        <router-link :to="{name: 'Home'}" class="btn btn-ghost normal-case text-xl">Vacation Days</router-link>
+
       </div>
       <div class="navbar-center hidden lg:flex">
         <ul class="menu menu-horizontal p-0">
@@ -37,12 +38,14 @@
           </li> -->
           <li><a>Dashboard</a></li>
           <li><a>FAQ</a></li>
-          <li><a>Contact</a></li>
+          <li>
+            <router-link :to="{name: 'Contact'}">Contact</router-link>
+          </li>
         </ul>
       </div>
       <div class="navbar-end">
         <SelectTheme />
-        <div v-if="false">
+        <div v-if="user">
           <div class="dropdown dropdown-end">
             <label tabindex="0" class="btn btn-ghost btn-circle avatar">
               <div class="w-10 rounded-full">
@@ -57,21 +60,28 @@
                 </a>
               </li>
               <li><a>Settings</a></li>
-              <li><a>Logout</a></li>
+              <li @click="logout"><a>Logout</a></li>
             </ul>
           </div>
         </div>
-        <router-link :to="{name: 'Login'}" v-else class="btn btn-primary">Login</router-link>
+        <router-link :to="{name: 'Login'}" v-if="!user" class="btn btn-primary">Login</router-link>
       </div>
     </div>
   </div>
 </template>
 
+<style>
+  .router-link-active {
+    font-weight: bold;
+    @apply text-primary;
+  }
+</style>
+
 <script lang="ts">
 
-// import { supabase } from "../supabase/init";
+import { supabase } from "../supabase/init";
 import { useRouter } from "vue-router";
-// import store from "../store/index";
+import store from "../store/index";
 import { computed } from "vue";
 import SelectTheme from '@/components/SelectTheme.vue';
 
@@ -82,20 +92,20 @@ export default {
   setup() {
 
     // get user from store
-    // const user = computed(() => store.state.user);
+    const user = computed(() => store.state.user);
 
     // setup ref to router
     const router = useRouter();
 
     // logout function
     const logout = async() => {
-      // await supabase.auth.signOut();
-      router.push({ name: "Login" });
+      await supabase.auth.signOut();
+      router.push({ name: "Home" });
     }
 
     return {
       logout,
-      // user
+      user
     };
   }
 

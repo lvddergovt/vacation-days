@@ -1,36 +1,46 @@
 <template>
-  <div class="max-w-screen-sm mx-auto px-4">
-    <!-- Error handling -->
-    <div v-if="errorMsg" class="mb-10 p-4 rounded-md shadow-lg">
-      <p class="text-red-500">
-        {{ errorMsg }}
-      </p>
+ 
+  <section class="w-full px-8 py-16 xl:px-8">
+    <div class="max-w-5xl mx-auto">
+      <!-- Error handling -->
+      <div v-if="errorMsg" class="mb-10 p-4 rounded-md shadow-lg">
+        <p class="text-red-500">
+          {{ errorMsg }}
+        </p>
+      </div>
+
+      <div class="flex flex-col items-center md:flex-row">
+
+        <div class="w-full space-y-5 md:w-3/5 md:pr-16">
+          <img src="@/assets/images/rubber/rubber-vacation.png" alt="">
+        </div>
+
+        <form @submit.prevent="login" class="w-full mt-16 md:mt-0 md:w-2/5">
+          <div class="relative z-10 h-auto p-8 py-10 overflow-hidden rounded-lg shadow-xl px-7">
+            <h3 class="mb-6 text-2xl font-medium text-center">Sign in to your account</h3>
+            
+            <div class="flex flex-col mb-2">
+              <label for="email" class="mb-1 text-sm">Email</label>
+              <input type="text" required class="input input-bordered w-full" id="email" v-model="email" />
+            </div>
+
+            <div class="flex flex-col mb-10">
+              <label for="password" class="mb-1 text-sm">Password</label>
+              <input type="password" required class="input input-bordered w-full" id="password" v-model="password" />
+            </div>
+            <div class="block">
+                <button class="btn w-full btn-primary">Sign In</button>
+            </div>
+            <router-link class="block text-sm text-center mt-6" :to="{ name: 'Register' }">
+              Don't have an account? <span class="text-secondary">Sign up here!</span>
+            </router-link>
+
+          </div>
+        </form>
+
+      </div>
     </div>
-
-    <!-- Login -->
-    <form @submit.prevent="login" class="p-8 flex flex-col rounded-box shadow-lg">
-      <h1 class="text-3xl mb-4">Login</h1>
-
-      <div class="flex flex-col mb-2">
-        <label for="email" class="mb-1 text-sm">Email</label>
-        <input type="text" required class="input input-bordered w-full" id="email" v-model="email" />
-      </div>
-
-      <div class="flex flex-col mb-10">
-        <label for="password" class="mb-1 text-sm">Password</label>
-        <input type="password" required class="input input-bordered w-full" id="password" v-model="password" />
-      </div>
-
-      <button type="submit" class="btn btn-primary">
-        Login
-      </button>
-
-      <router-link class="text-sm mt-6 text-center" :to="{ name: '' }">
-        Don't have an account? <span class="text-secondary">Register</span>
-      </router-link>
-    </form>
-
-  </div>
+  </section>
 </template>
 
 <script>

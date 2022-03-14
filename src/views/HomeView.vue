@@ -1,14 +1,20 @@
 <template>
+
   <section>
     <div class="container mx-auto flex px-5 pb-24 items-center justify-center flex-col">
-      <img class="lg:w-2/6 md:w-3/6 w-5/6 mb-10 object-cover object-center rounded" alt="hero" src="@/assets/images/header-image.png">
+      <img class="lg:w-2/6 md:w-3/6 w-5/6 mb-10 object-cover object-center rounded" alt="hero" src="@/assets/images/rubber/rubber-surfing.png">
       <div class="text-center lg:w-2/3 w-full">
-        <h1 class="title-font sm:text-4xl text-3xl mb-4 font-medium">Keep track of your vacation days</h1>
+        <h1 class="text-4xl font-extrabold tracking-tight sm:text-5xl md:text-4xl lg:text-5xl xl:text-6xl mb-10">
+          <span class="block xl:inline">Keep track of your</span>
+          <span class="block text-primary xl:inline"> Vacation Days!</span>
+        </h1>
         <p class="leading-relaxed mb-8">
           Easily keep track of your leave and vacation days. Set up a company account to streamline your workflow. Know when people are not in the office.
         </p>
         <div class="flex justify-center items-center">
-          <button class="btn btn-primary mr-5">Get Started</button>
+          <router-link class="btn btn-primary mr-5" :to="{ name: 'Register' }">
+            Get Started
+          </router-link>
           <span class="mr-4">or</span>
           <button class="btn btn-secondary-content">Learn More</button>
         </div>
@@ -16,115 +22,68 @@
     </div>
   </section>
 
-  <!-- Statistics -->
-  <section>
-    <div class="container px-5 py-24 mx-auto">
-      <div class="flex flex-col text-center w-full mb-20">
-        <h1 class="sm:text-3xl text-2xl font-medium title-font mb-4">Master Cleanse Reliac Heirloom</h1>
-        <p class="lg:w-2/3 mx-auto leading-relaxed text-base">Whatever cardigan tote bag tumblr hexagon brooklyn asymmetrical gentrify, subway tile poke farm-to-table. Franzen you probably haven't heard of them man bun deep jianbing selfies heirloom prism food truck ugh squid celiac humblebrag.</p>
+  <!-- Features -->
+  <section class="w-full pt-7 pb-7 md:pt-20 md:pb-24">
+    <div class="box-border flex flex-col items-center content-center px-8 mb-40 mx-auto leading-6 md:flex-row max-w-7xl lg:px-16">
+
+        <!-- Image -->
+      <div class="box-border relative w-full max-w-md px-4 mt-5 mb-4 -ml-5 text-center bg-no-repeat bg-contain md:ml-0 md:mt-0 md:max-w-none lg:mb-0 md:w-1/2 xl:pl-10">
+        <img src="@/assets/images/rubber/rubber-man-13.png" class="p-2 pl-6 pr-5 xl:pl-16 xl:pr-20 ">
       </div>
-      <div class="flex flex-wrap -m-4 text-center">
-        <div class="p-4 md:w-1/4 sm:w-1/2 w-full">
-          <div class="px-4 py-6 rounded-lg">
-            <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="text-secondary w-12 h-12 mb-3 inline-block" viewBox="0 0 24 24">
-              <path d="M8 17l4 4 4-4m-4-5v9"></path>
-              <path d="M20.88 18.09A5 5 0 0018 9h-1.26A8 8 0 103 16.29"></path>
-            </svg>
-            <h2 class="title-font font-medium text-3xl">2.7K</h2>
-            <p class="leading-relaxed">Downloads</p>
-          </div>
-        </div>
-        <div class="p-4 md:w-1/4 sm:w-1/2 w-full">
-          <div class="px-4 py-6 rounded-lg">
-            <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="text-secondary w-12 h-12 mb-3 inline-block" viewBox="0 0 24 24">
-              <path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"></path>
-              <circle cx="9" cy="7" r="4"></circle>
-              <path d="M23 21v-2a4 4 0 00-3-3.87m-4-12a4 4 0 010 7.75"></path>
-            </svg>
-            <h2 class="title-font font-medium text-3xl">1.3K</h2>
-            <p class="leading-relaxed">Users</p>
-          </div>
-        </div>
-        <div class="p-4 md:w-1/4 sm:w-1/2 w-full">
-          <div class="px-4 py-6 rounded-lg">
-            <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="text-secondary w-12 h-12 mb-3 inline-block" viewBox="0 0 24 24">
-              <path d="M3 18v-6a9 9 0 0118 0v6"></path>
-              <path d="M21 19a2 2 0 01-2 2h-1a2 2 0 01-2-2v-3a2 2 0 012-2h3zM3 19a2 2 0 002 2h1a2 2 0 002-2v-3a2 2 0 00-2-2H3z"></path>
-            </svg>
-            <h2 class="title-font font-medium text-3xl">74</h2>
-            <p class="leading-relaxed">Files</p>
-          </div>
-        </div>
-        <div class="p-4 md:w-1/4 sm:w-1/2 w-full">
-          <div class="px-4 py-6 rounded-lg">
-            <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="text-secondary w-12 h-12 mb-3 inline-block" viewBox="0 0 24 24">
-              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
-            </svg>
-            <h2 class="title-font font-medium text-3xl">46</h2>
-            <p class="leading-relaxed">Places</p>
-          </div>
-        </div>
+
+      <!-- Content -->
+      <div class="box-border order-first w-full md:w-1/2 md:pl-10 md:order-none">
+        <h2 class="m-0 text-xl font-semibold leading-tight lg:text-3xl md:text-2xl">
+          Boost Productivity
+        </h2>
+        <p class="pt-4 pb-8 m-0 leading-7 sm:pr-12 xl:pr-32 lg:text-lg">
+          Build an atmosphere that creates productivity in your organization and your company culture.
+        </p>
+        <ul class="p-0 m-0 leading-6">
+          <li class="box-border relative py-1 pl-0 text-left border-solid">
+            <span class="inline-flex items-center justify-center w-6 h-6 mr-2 text-white bg-primary rounded-full"><span class="text-sm font-bold">✓</span></span> Maximize productivity and growth
+          </li>
+          <li class="box-border relative py-1 pl-0 text-left border-solid">
+            <span class="inline-flex items-center justify-center w-6 h-6 mr-2 text-white bg-primary rounded-full"><span class="text-sm font-bold">✓</span></span> Speed past your competition
+          </li>
+          <li class="box-border relative py-1 pl-0 text-left border-solid">
+            <span class="inline-flex items-center justify-center w-6 h-6 mr-2 text-white bg-primary rounded-full"><span class="text-sm font-bold">✓</span></span> Learn the top techniques
+          </li>
+        </ul>
+      </div>
+      <!-- End  Content -->
+  </div>
+  <div class="box-border flex flex-col items-center content-center px-8 mx-auto mt-2 leading-6 md:mt-20 xl:mt-0 md:flex-row max-w-7xl lg:px-16">
+
+      <!-- Content -->
+      <div class="box-border w-full md:w-1/2 md:pl-6 xl:pl-32">
+        <h2 class="m-0 text-xl font-semibold leading-tight border-0 lg:text-3xl md:text-2xl">
+          Automated Tasks
+        </h2>
+        <p class="pt-4 pb-8 m-0 leading-7 sm:pr-10 lg:text-lg">
+          Save time and money with our revolutionary services. We are the leaders in the industry.
+        </p>
+        <ul class="p-0 m-0 leading-6">
+          <li class="box-border relative py-1 pl-0 text-left border-solid">
+            <span class="inline-flex items-center justify-center w-6 h-6 mr-2 text-white bg-primary rounded-full"><span class="text-sm font-bold">✓</span></span> Automated task management workflow
+          </li>
+          <li class="box-border relative py-1 pl-0 text-left border-solid">
+            <span class="inline-flex items-center justify-center w-6 h-6 mr-2 text-white bg-primary rounded-full"><span class="text-sm font-bold">✓</span></span> Detailed analytics for your data
+          </li>
+          <li class="box-border relative py-1 pl-0 text-left border-solid">
+            <span class="inline-flex items-center justify-center w-6 h-6 mr-2 text-white bg-primary rounded-full"><span class="text-sm font-bold">✓</span></span> Some awesome integrations
+          </li>
+        </ul>
+      </div>
+      <!-- End  Content -->
+
+      <!-- Image -->
+      <div class="box-border relative w-full max-w-md px-4 mt-10 mb-4 text-center bg-no-repeat bg-contain border-solid md:mt-0 md:max-w-none lg:mb-0 md:w-1/2">
+        <img src="@/assets/images/rubber/rubber-woman-dancing.png" class="pl-4 sm:pr-10 xl:pl-10 lg:pr-32">
       </div>
     </div>
   </section>
 
-  <!-- Features -->
-  <section>
-    <div class="container px-5 py-24 mx-auto">
-      <div class="flex items-center lg:w-3/5 mx-auto border-b pb-10 mb-10 border-gray-800 sm:flex-row flex-col">
-        <div class="sm:w-32 sm:h-32 h-20 w-20 sm:mr-10 inline-flex items-center justify-center rounded-full text-primary bg-gray-800 flex-shrink-0">
-          <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="sm:w-16 sm:h-16 w-10 h-10" viewBox="0 0 24 24">
-            <path d="M22 12h-4l-3 9L9 3l-3 9H2"></path>
-          </svg>
-        </div>
-        <div class="flex-grow sm:text-left text-center mt-6 sm:mt-0">
-          <h2 class="text-lg title-font font-medium mb-2">Shooting Stars</h2>
-          <p class="leading-relaxed text-base">Blue bottle crucifix vinyl post-ironic four dollar toast vegan taxidermy. Gastropub indxgo juice poutine.</p>
-          <a class="mt-3 text-primary inline-flex items-center">Learn More
-            <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4 ml-2" viewBox="0 0 24 24">
-              <path d="M5 12h14M12 5l7 7-7 7"></path>
-            </svg>
-          </a>
-        </div>
-      </div>
-      <div class="flex items-center lg:w-3/5 mx-auto border-b pb-10 mb-10 border-gray-800 sm:flex-row flex-col">
-        <div class="flex-grow sm:text-left text-center mt-6 sm:mt-0">
-          <h2 class="text-lg title-font font-medium mb-2">The Catalyzer</h2>
-          <p class="leading-relaxed text-base">Blue bottle crucifix vinyl post-ironic four dollar toast vegan taxidermy. Gastropub indxgo juice poutine.</p>
-          <a class="mt-3 text-primary inline-flex items-center">Learn More
-            <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4 ml-2" viewBox="0 0 24 24">
-              <path d="M5 12h14M12 5l7 7-7 7"></path>
-            </svg>
-          </a>
-        </div>
-        <div class="sm:w-32 order-first sm:order-none sm:h-32 h-20 w-20 sm:ml-10 inline-flex items-center justify-center rounded-full text-primary bg-gray-800 flex-shrink-0">
-          <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="sm:w-16 sm:h-16 w-10 h-10" viewBox="0 0 24 24">
-            <circle cx="6" cy="6" r="3"></circle>
-            <circle cx="6" cy="18" r="3"></circle>
-            <path d="M20 4L8.12 15.88M14.47 14.48L20 20M8.12 8.12L12 12"></path>
-          </svg>
-        </div>
-      </div>
-      <div class="flex items-center lg:w-3/5 mx-auto sm:flex-row flex-col">
-        <div class="sm:w-32 sm:h-32 h-20 w-20 sm:mr-10 inline-flex items-center justify-center rounded-full text-primary bg-gray-800 flex-shrink-0">
-          <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="sm:w-16 sm:h-16 w-10 h-10" viewBox="0 0 24 24">
-            <path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"></path>
-            <circle cx="12" cy="7" r="4"></circle>
-          </svg>
-        </div>
-        <div class="flex-grow sm:text-left text-center mt-6 sm:mt-0">
-          <h2 class="text-lg title-font font-medium mb-2">The 400 Blows</h2>
-          <p class="leading-relaxed text-base">Blue bottle crucifix vinyl post-ironic four dollar toast vegan taxidermy. Gastropub indxgo juice poutine.</p>
-          <a class="mt-3 text-primary inline-flex items-center">Learn More
-            <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4 ml-2" viewBox="0 0 24 24">
-              <path d="M5 12h14M12 5l7 7-7 7"></path>
-            </svg>
-          </a>
-        </div>
-      </div>
-      <button class="btn btn-primary flex mx-auto my-20">Get Started</button>
-    </div>
-  </section>
 </template>
 
 <script lang="ts">

@@ -1,5 +1,5 @@
 <template>
-  <div data-theme="light">
+  <div v-if="appReady" data-theme="light">
     <NavigationBar />
 
     <router-view/>
@@ -11,9 +11,9 @@
 <script>
 import NavigationBar from './components/NavigationBar.vue';
 import FooterBar from './components/FooterBar.vue';
-// import { ref } from "vue";
-// import { supabase } from "./supabase/init";
-// import store from "./store/index";
+import { ref } from "vue";
+import { supabase } from "./supabase/init";
+import store from "./store/index";
 
 export default {
   components: {
@@ -22,20 +22,20 @@ export default {
   },
   setup() {
 
-    // const appReady = ref(null);
+    const appReady = ref(null);
 
-    // const user = supabase.auth.user();
-    // if (!user) {
-    //   appReady.value = true;
-    // }
+    const user = supabase.auth.user();
+    if (!user) {
+      appReady.value = true;
+    }
 
-    // supabase.auth.onAuthStateChange((_, session) => {
-    //   store.methods.setUser(session);
-    //   appReady.value = true;
-    // })
+    supabase.auth.onAuthStateChange((_, session) => {
+      store.methods.setUser(session);
+      appReady.value = true;
+    })
 
     return {
-      // appReady
+      appReady
     };
   }
 }
