@@ -2,7 +2,7 @@
 
 Improve your company's paid time off approval workflow, and gain insights within your organization.
 
-##  Why was this made?
+## 🤷‍♂️ Why was this made?
 I wanted to gain some experience working with Vue/Tailwind/Supabase.
 
 ## ⚙ Project setup
