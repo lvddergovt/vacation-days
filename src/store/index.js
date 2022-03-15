@@ -10,6 +10,8 @@ const methods = {
   }
 }
 
+// perhaps get user profiles here?
+
 export default {
   state,
   methods
