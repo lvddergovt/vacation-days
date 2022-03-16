@@ -89,7 +89,7 @@ import store from "@/store/index";
 import { computed } from "vue";
 
 export default defineComponent({
-  name: 'DashboardPage',
+  name: 'Profile',
   components: {
     
   },

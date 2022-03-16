@@ -6,6 +6,7 @@ import ContactPage from '../views/ContactPage.vue';
 import DashboardPage from '../views/user/DashboardPage.vue';
 import EmployeeOverview from '../views/user/EmployeeOverview.vue';
 import ProfilePage from '../views/user/ProfilePage.vue';
+import CreatePTORequest from '../views/user/CreatePTORequest.vue';
 
 const routes: Array<RouteRecordRaw> = [
   {
@@ -62,6 +63,15 @@ const routes: Array<RouteRecordRaw> = [
     component: ProfilePage,
     meta: {
       title: "Profile"
+    }
+  },
+  {
+    path: "/create",
+    name: "Create",
+    component: CreatePTORequest,
+    meta: {
+      title: "Create",
+      auth: true
     }
   },
   // {

@@ -47,10 +47,11 @@
             <tbody>
              
               <tr v-for="(item, index) in userPTO" :key="index">
-                <td>{{ item.type }}</td>
+                <td>🌞 {{ item.type }}</td>
                 <td>
-                  <span class="badge badge-success" v-if="isPTOApproved(item)">Approved</span>
-                  <span class="badge badge-error" v-else>Denied</span>
+                  <span class="badge badge-success" v-if="isPtoApproved(item)">Approved</span>
+                  <span class="badge badge-error" v-if="isPtoDenied(item)">Denied</span>
+                  <span class="badge badge-neutral" v-if="isPtoRequested(item)">Handling</span>
                 </td>
                 <td>{{ item.start }}</td>
                 <td>{{ item.end }}</td>
@@ -95,6 +96,7 @@ export default defineComponent({
     // create data / vars
     const userPTO = ref([]);
     const dataLoaded = ref(null);
+
     
     // get data
     const getData = async() => {
@@ -128,12 +130,23 @@ export default defineComponent({
       }
     };
 
-    const isPTOApproved = (item) => {
+    const isPtoApproved = (item) => {
       if (item.is_approved && item.handled_date != null) {
         return true;
-      } else {
-        false
       }
+    }
+
+    const isPtoDenied = (item) => {
+      if (!item.is_approved && item.handled_date != null) {
+        return true;
+      }
+    }
+
+    const isPtoRequested = (item) => {
+      if (item.handled_date == null) {
+        return true;
+      }
+      
     }
 
     // run data function
@@ -147,7 +160,9 @@ export default defineComponent({
       dataLoaded,
       user,
       userData,
-      isPTOApproved
+      isPtoApproved,
+      isPtoDenied,
+      isPtoRequested
     };
   }
 });
