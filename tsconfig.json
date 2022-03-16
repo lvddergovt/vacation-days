@@ -33,8 +33,9 @@
     "src/**/*.vue",
     "tests/**/*.ts",
     "tests/**/*.tsx"
-  ],
+, "src/router/index.js"  ],
   "exclude": [
     "node_modules"
-  ]
+  ],
+  "allowJs": true,
 }

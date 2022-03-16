@@ -1,4 +1,6 @@
 import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router';
+// @ts-ignore
+import { supabase } from '../supabase/init.js';
 import HomeView from '../views/HomeView.vue';
 import LoginPage from '../views/LoginPage.vue';
 import RegisterPage from '../views/RegisterPage.vue';
@@ -14,7 +16,8 @@ const routes: Array<RouteRecordRaw> = [
     name: 'Home',
     component: HomeView,
     meta: {
-      title: "Home"
+      title: "Home",
+      auth: false
     }
   },
   {
@@ -22,7 +25,8 @@ const routes: Array<RouteRecordRaw> = [
     name: 'Login',
     component: LoginPage,
     meta: {
-      title: "Login"
+      title: "Login",
+      auth: false
     }
   },
   {
@@ -30,7 +34,8 @@ const routes: Array<RouteRecordRaw> = [
     name: 'Register',
     component: RegisterPage,
     meta: {
-      title: "Register"
+      title: "Register",
+      auth: false
     }
   },
   {
@@ -38,7 +43,8 @@ const routes: Array<RouteRecordRaw> = [
     name: 'Contact',
     component: ContactPage,
     meta: {
-      title: "Contact"
+      title: "Contact",
+      auth: false
     }
   },
   {
@@ -46,7 +52,8 @@ const routes: Array<RouteRecordRaw> = [
     name: 'Dashboard',
     component: DashboardPage,
     meta: {
-      title: "Dashboard"
+      title: "Dashboard",
+      auth: true
     }
   },
   {
@@ -54,7 +61,8 @@ const routes: Array<RouteRecordRaw> = [
     name: 'Employee-Overview',
     component: EmployeeOverview,
     meta: {
-      title: "Employees"
+      title: "Employees",
+      auth: true
     }
   },
   {
@@ -62,7 +70,8 @@ const routes: Array<RouteRecordRaw> = [
     name: 'Profile',
     component: ProfilePage,
     meta: {
-      title: "Profile"
+      title: "Profile",
+      auth: true
     }
   },
   {
@@ -94,5 +103,18 @@ router.beforeEach((to, from, next) => {
   document.title = `${to.meta.title} | Vacation Days`;
   next();
 });
+
+// Route guard for auth routes
+router.beforeEach((to, from, next) => {
+  const user = supabase.auth.user();
+  if (to.matched.some((res) => res.meta.auth)) {
+    if (user) {
+      next();
+      return;
+    }
+    next({name: ""});
+  }
+  next();
+})
 
 export default router
