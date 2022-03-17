@@ -21,10 +21,10 @@
           </div>
         </div> 
         
-        <div class="divider text-base-content/60 my-5">Reports</div>
+        <div class="divider text-base-content/60 my-5">Info</div>
           
           
-        <div class="text-lg font-extrabold">Audience Report</div> 
+        <div class="text-lg font-extrabold"></div> 
         <div class="grid gap-3">
           
         </div>
