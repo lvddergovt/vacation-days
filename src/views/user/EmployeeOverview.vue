@@ -36,7 +36,7 @@
                 <td>
                   {{ user.job_title }}
                   <br>
-                  <span class="badge badge-ghost badge-sm">Desktop Support Technician</span>
+                  <span class="badge badge-ghost badge-sm">Full Time</span>
                 </td>
                 <th>
                   <button class="btn btn-ghost btn-xs">details</button>
