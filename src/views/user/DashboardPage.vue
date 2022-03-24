@@ -45,21 +45,40 @@
               </tr>
             </thead>
             <tbody>
-             
-              <tr v-for="(item, index) in userPTO" :key="index">
-                <td>🌞 {{ item.type }}</td>
-                <td>
-                  <span class="badge badge-success" v-if="isPtoApproved(item)">Approved</span>
-                  <span class="badge badge-error" v-if="isPtoDenied(item)">Denied</span>
-                  <span class="badge badge-neutral" v-if="isPtoRequested(item)">Handling</span>
-                </td>
-                <td>{{ item.start }}</td>
-                <td>{{ item.end }}</td>
-                <td>
-                  <button class="btn btn-ghost btn-xs">details</button>
-                </td>
-              </tr>
-
+             <template v-if="isLoading">
+						 		<tr>
+									<td>
+										<div class="bg-gray-200 w-20 h-8 animate-pulse rounded-full"></div>
+									</td>
+									<td>
+										<div class="bg-gray-200 w-20 h-8 animate-pulse rounded-full"></div>
+									</td>
+									<td>
+										<div class="bg-gray-200 w-20 h-8 animate-pulse rounded-full"></div>
+									</td>
+									<td>
+										<div class="bg-gray-200 w-20 h-8 animate-pulse rounded-full"></div>
+									</td>
+									<td>
+										<div class="bg-gray-200 w-20 h-8 animate-pulse rounded-full"></div>
+									</td>
+								</tr>
+             </template>
+						 <template v-else>
+								<tr v-for="(item, index) in userPTO" :key="index">
+									<td>🌞 {{ item.type }}</td>
+									<td>
+										<span class="badge badge-success" v-if="isPtoApproved(item)">Approved</span>
+										<span class="badge badge-error" v-if="isPtoDenied(item)">Denied</span>
+										<span class="badge badge-neutral" v-if="isPtoRequested(item)">Handling</span>
+									</td>
+									<td>{{ item.start }}</td>
+									<td>{{ item.end }}</td>
+									<td>
+										<button class="btn btn-ghost btn-xs">details</button>
+									</td>
+								</tr>
+							</template>
             </tbody>
             
           </table>
@@ -95,7 +114,7 @@ export default defineComponent({
 
     // create data / vars
     const userPTO = ref([]);
-    const dataLoaded = ref(null);
+    const isLoading = ref(true);
 
     
     // get data
@@ -104,8 +123,7 @@ export default defineComponent({
         const { data: pto, error } = await supabase.from("paid-time-off").select("*").eq("user_id", user.value.id);
         if (error) throw error;
         userPTO.value = pto.sort((a, b) => a.start.localeCompare(b.start));
-        console.log(pto)
-        dataLoaded.value = true;
+        
       }
       catch(error) {
         console.warn(error.message);
@@ -153,11 +171,14 @@ export default defineComponent({
     onMounted(() => {
       getData();
       getProfile();
+      
+      // set loading state to false
+      isLoading.value = false;
     });
 
     return {
       userPTO,
-      dataLoaded,
+      isLoading,
       user,
       userData,
       isPtoApproved,
